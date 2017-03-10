@@ -4,12 +4,12 @@ Hansei Cyber Security High school today's meal parsing module
 
 ## Installation
 ```sh
-$ sudo npm install Hansei-Cafeteria
+$ sudo npm install hansei-cafeteria
 ```
 ## Test code
 ```sh
 "use strict";
-let Hcafeteria = require('Hansei-Cafeteria');
+let Hcafeteria = require('hansei-cafeteria');
 let http = require('http');
 
 let hCafe = new Hcafeteria();

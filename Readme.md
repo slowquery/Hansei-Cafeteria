@@ -12,7 +12,8 @@ $ sudo npm install hansei-cafeteria
 let Hcafeteria = require('hansei-cafeteria');
 let http = require('http');
 
-let hCafe = new Hcafeteria();
+let hCafe = new Hcafeteria("B100000662");
+// Hansei Cyber Security High School Code = B100000662
 
 http.createServer((req, res) => {
     hCafe.parseCafeteria().then((data) => {

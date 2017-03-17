@@ -1,6 +1,6 @@
 {
   "name": "hansei-cafeteria",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Hansei Cyber Security High school today's meal parsing module",
   "author": {
     "name": "antiweb",
@@ -9,11 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Moonoik/Hansei-Cafeteria.git"
+    "url": "https://github.com/antiwebkr/Hansei-Cafeteria"
   },
   "main": "./cafeteria",
   "dependencies": {
     "cheerio": "^0.22.0",
+    "html-entities": "^1.2.0",
     "http": "0.0.0",
     "moment": "^2.17.1",
     "request": "^2.81.0"

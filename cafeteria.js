@@ -1,7 +1,8 @@
 "use strict";
 let moment = require('moment'),
     request = require('request'),
-    cheerio = require('cheerio');
+    cheerio = require('cheerio'),
+    entities = require('html-entities').AllHtmlEntities;
 
 module.exports = class Hcafeteria {
     constructor(schoolCode) {
@@ -17,21 +18,17 @@ module.exports = class Hcafeteria {
                 if(err) resolve(err);
                 else {
                     let $ = cheerio.load(html);
-                    let list = $("td").children("div");
                     let today = Number(this.getDay());
                     let retst = "";
+                    let cafeteria = $("td").filter(function() {
+                        return $(this).text().indexOf(today + "[중식]") > -1;
+                    }).html();
 
-                    if(list[today+2].children.length > 1) {
-                        for(let i = 0; i < list[today+2].children.length; i+=2) {
-                            if(i+1 === list[today+2].children.length)
-                                retst += list[today+2].children[i].data;
-                            else
-                                retst += list[today+2].children[i].data + "\n";
-                        }
-                    }
-                    else {
+                    if(cafeteria) 
+                        retst += entities.decode(cafeteria.replace(/(<([^>]+)>)/g, "\n")).slice(1);
+                    else
                         retst += "조회된 급식 정보가 없습니다.";
-                    }
+
                     resolve(retst);
                 }
             });

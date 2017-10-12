@@ -21,10 +21,12 @@ module.exports = class Hcafeteria {
                     let today = Number(this.getDay());
                     let retst = "";
                     let cafeteria = $("td").filter(function() {
-                        return $(this).text().indexOf(today + "[중식]") > -1;
+                        return $(this).text().indexOf(today) > -1;
                     }).html();
 
-                    if(cafeteria) 
+		    if(typeof parseInt(entities.decode(cafeteria.replace(/(<([^>]+)>)/g, "\n")).slice(1)) === 'number')
+                        retst += "조회된 급식 정보가 없습니다.";
+                    else if(cafeteria) 
                         retst += entities.decode(cafeteria.replace(/(<([^>]+)>)/g, "\n")).slice(1);
                     else
                         retst += "조회된 급식 정보가 없습니다.";
